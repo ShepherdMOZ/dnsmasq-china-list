@@ -1,0 +1,12 @@
+FROM python:3.11-slim
+
+# Install git (since the workflow performs git status/commit/push checks)
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy repository files into the container
+COPY . .
+
+# Run the local workflow simulation script
+CMD ["/bin/bash", "./test_workflow_in_container.sh"]

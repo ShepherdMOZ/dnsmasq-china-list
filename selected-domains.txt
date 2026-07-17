@@ -1,0 +1,17 @@
+# miHoYo Corporate & Community Domains
+mihoyo.com
+mihoyocg.com
+mihoyocloud.com
+mihoyogift.com
+mihoyomall.com
+miyoushe.com
+hoyoverse.com
+
+# Game-specific Domains (Genshin, Honkai, ZZZ)
+bh3.com
+yuanshen.com
+juequling.com
+genshinimpact.com
+honkaiimpact3.com
+honkaistarrail.com
+zenlesszonezero.com
