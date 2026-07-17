@@ -48,7 +48,7 @@ fi
 echo "Simulating upstream sync inside container..."
 git remote add upstream https://github.com/felixonmars/dnsmasq-china-list.git || true
 git fetch --depth=1 upstream master
-git merge upstream/master --no-edit -m "merge: sync upstream changes" || echo "Local test merge warning/conflict ignored"
+git checkout upstream/master -- accelerated-domains.china.conf
 
 # Modify selected-domains.txt and run again to verify diff works
 echo "Adding new domain to selected-domains.txt..."

@@ -27,8 +27,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -39,10 +37,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/felixonmars/dnsmasq-china-list.git || true
           git fetch --depth=1 upstream master
-          git merge upstream/master --no-edit -m "merge: sync upstream changes" || {
-            echo "Failed to merge upstream master. Attempting to resolve conflicts by keeping local files where needed or failing gracefully."
-            exit 1
-          }
+          git checkout upstream/master -- accelerated-domains.china.conf
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -67,9 +62,9 @@ jobs:
       - name: Commit and Push Changes
         if: github.event_name != 'pull_request'
         run: |
-          git add selected-domains.unbound.conf
+          git add selected-domains.unbound.conf accelerated-domains.china.conf
           if ! git diff --cached --quiet; then
-            git commit -m "auto: update selected-domains.unbound.conf [skip ci]"
+            git commit -m "auto: update configurations [skip ci]"
           else
             echo "No changes to commit"
           fi
